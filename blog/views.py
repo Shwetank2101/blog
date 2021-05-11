@@ -1,6 +1,7 @@
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.urls import reverse_lazy
+from django.shortcuts import render, redirect
 
 from . models import Post
 
@@ -26,3 +27,6 @@ class BlogDeleteView(DeleteView):
 	model = Post
 	template_name = 'post_delete.html'
 	success_url = reverse_lazy('home')
+
+def handler404(request,*args,**argv):
+	return render(request,'404.html')
